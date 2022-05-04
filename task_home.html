@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+    <h2>Gra 2048 - część domowa</h2>
+    <ul>
+        <li><a href="2048_home.exe">Aplikacja przykładowa</a></li>
+        <li>Zadanie polega na dokończeniu gry 2048 z części laboratoryjnej</li>
+		<li>Warunkiem sprawdzenia tej części jest zrobienie wszystkich funkcjonalności z części laboratoryjnej</li>
+        <li>W przypadku niejasności program musi być zgodny z zachowaniem i wyglądem aplikacji przykładowej, jednak nie należy wzorować się na potencjalnych błędach</li>
+	</ul>
+	
+	<h3>Uwagi:</h3>
+	<ul>
+		<li>Można korzystać w tej części z GDI, natomiast zakazane jest korzystanie z GDI+</li>
+		<li>Proszę pamiętać o prawidłowym zarządzaniu pamięcią (zwalnianie niepotrzebnych obiektów)</li>
+	</ul>
+		
+	<h3>Layout:</h3>
+	<ul>
+		<li>Dwa okna o tej samej zawartości</li>
+		<li>Nad planszą znajduje się licznik z punktami</li>
+        <li>Pola planszy:</li>
+		<ul>
+			<li>Posiadają zaokrąglone rogi</li>
+			<li>Na polu może znajdować się klocek z wyświetloną wartość, od której zależy kolor klocka. Proponowane kolory:</li>
+			<ul>
+				<li>(238, 228, 198) dla 2</li>
+				<li>(239, 225, 218) dla 4</li>
+				<li>(243, 179, 124) dla 8</li>
+				<li>(246, 153, 100) dla 16</li>
+				<li>(246, 125, 98) dla 32</li>
+				<li>(247, 93, 60) dla 64</li>
+				<li>(237, 206, 116) dla 128</li>
+				<li>(239, 204, 98) dla 256</li>
+				<li>(243, 201, 85) dla 512</li>
+				<li>(238, 200, 72) dla 1024</li>
+				<li>(239, 192, 47) dla 2048</li>
+			</ul>
+		</ul>
+		<li>Menu z możliwością:</li>
+		<ul>
+			<li>Zaczęcia nowej gry</li> 
+			<li>Wyboru wartości klocka jaką należy uzyskać, aby wygrać grę (8, 16, 64, 2048). Wybrana wartość powinna być odpowiednio oznaczona</li>
+		</ul>
+	</ul>
+	<h3>Zasady gry:</h3>
+	<ul>
+		<li>Celem gry jest takie przesuwanie i łączenie pojawiających się na planszy klocków, aby utworzyć klocek z liczbą (8, 16, 64, 2048)</li>
+		<li>Na planszy pojawiają się klocki z numerami, które przesuwają się w kierunku, który wskazał gracz</li>
+		<li>Poruszają się, dopóki nie natrafią na koniec planszy lub inną przeszkodę</li>
+		<li>Po każdym ruchu na wolnym polu pojawia się jeden klocek o wartości 2</li>
+		<li>Jeżeli dwa klocki o tej samej wartości połączą się w czasie ruchu, to stworzą jeden klocek o wartości ich sumy</li>
+		<li>Zsumowany klocek nie może się już łączyć z innymi w tym samym ruchu</li>
+		<li>Gracz odnosi zwycięstwo, gdy uda mu się utworzyć klocek o odpowiedniej wartości (8, 16, 64, 2048)</li>
+		<li>Gra kończy się, gdy na planszy nie ma wolnych miejsc i nie ma żadnych klocków, które mogłyby się połączyć w jeden w kolejnym ruchu</li>
+		<li>Punkty liczone są jako suma wszystkich uzyskanych klocków (bez tych pojawiająch się losowo)</li>
+		<li><a href="https://play2048.co/">Orginalna wersja gry</a></li>
+	</ul>
+	
+	<h3>Logika aplikacji:</h3>
+	<ul>
+		<li>Jeżeli gracz zdoła utworzyć klocek o wskazanej wartości, gra jest blokowana, na całym obszarze gry wyświetlana jest zielona, półprzezroczysta powierzchnia wraz z komunikatem o zwycięstwie</li>
+		<li>Jeżeli gracz nie jest w stanie wykonać kolejnego ruchu, gra jest blokowana, na całym obszarze gry wyświetlana jest czerwona, półprzezroczysta powierzchnia wraz z komunikatem o końcu gry</li>
+		<li>W trakcie pojawiania się nowego klocka występuje animacja zwiększania jego rozmiaru, aż do uzyskania normalnego rozmiaru</li>
+		<li>Po połączeniu się dwóch klocków występuje animacja. Powstały klocek zwiększa swój rozmiar, a następnie wraca do stanu początkowego</li>
+		<li>Przy ponownym uruchomieniu gry przywracany jest stan gry(stan planszy, liczba punktów, wartość do wygranej, oraz status gry - jeżeli gra została zamknięta przy wyświetlaniu komunikatu, to z takim samym komunikatem startuje) przed poprzednim zamknięciem. </li>
+	</ul>
+	
+	<h3>Proponowane sterowanie:</h3>
+	<ul>
+		<li>W, S, A, D - poruszanie się</li>
+    </ul>
+	
+    <h3>Wskazówki:</h3>
+	<ul>
+		<li>CreateSolidBrush</li>
+		<li>WM_PAINT</li>
+		<li>WM_TIMER</li>
+		<li>WM_KEYDOWN</li>
+		<li>WritePrivateProfileString</li>
+		<li>GetPrivateProfileString</li>
+		<li>FillRect</li>
+		<li>AlphaBlend</li>
+		<li>DrawText</li>
+		<li>CheckMenuItem</li>
+		<li>RoundRect</li>
+    </ul>
+
+    <h3>Punktacja:</h3>
+    <ul>
+		<li>Implementacja zasad gry - 3</li>
+		<li>Animacje klocków - 2</li>
+		<li>Zapisywanie aktualnego stanu gry - 2</li>
+		<li>Wyświetlanie odpowiedniego statusu gry na półprzezroczystej powierzchni oraz zaokrąglone pola planszy - 2</li>
+		<li>Wybór wartości kończącej grę - 1</li>
+		<li>Licznik punktów - 1</li>
+		<li>Tworzenie nowej gry - 1</li>
+    </ul>
+    </body>
+</html>

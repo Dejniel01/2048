@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+    <h2>Gra 2048 - część laboratoryjna</h2>
+    <ul>
+        <li><a href="2048.exe">Aplikacja przykładowa</a></li>
+        <li>Zadanie polega na stworzeniu szkieletu gry 2048</li>
+        <li>W przypadku niejasności program musi być zgodny z zachowaniem i wyglądem aplikacji przykładowej, jednak nie należy wzorować się na potencjalnych błędach</li>
+	</ul>
+	
+	<h3>Uwagi:</h3>
+	<ul>
+		<li>Nie można korzystać w tej części z GDI!</li>
+		<li>Proszę pamiętać o prawidłowym zarządzaniu pamięcią (zwalnianie niepotrzebnych obiektów)</li>
+	</ul>
+		
+	<h3>Layout:</h3>
+	<ul>
+		<li>Dwa okna o tej samej zawartości(w pasku zadań widać tylko jedno)</li>
+        <li>Stały rozmiar okien zależny od rozmiaru planszy</li>
+		<li>Ustawiony tytuł "2048"</li>
+		<li>Ustawiona ikonka: "2048_icon.ico" (Ikonka powinna być także widoczna w pasku zadań. Wystarczy jak będzie w oknie głównym.)</li>
+		<li>Ustawione tło: (250, 247, 238)</li>
+		<li>W oknach plansza o rozmiarze 4x4</li>
+		<li>Pola do gry w kolorze (204, 192, 174) oraz rozmiarze 60px</li>
+	</ul>
+	<h3>Logika aplikacji:</h3>
+	<ul>
+		<li>Przy poruszaniu dowolnego okna, drugie porusza się symetrycznie względem środka ekranu (Jako pozycje danego okna uznajemy jego środek)</li>
+		<li>Gdy oba okna nachodzą na siebie, jedno z nich (dowolne) staje się półprzezroczyste</li>
+	</ul>
+	
+    <h3>Wskazówki:</h3>
+	<ul>
+		<li>CreateSolidBrush</li>
+		<li>AdjustWindowRect</li>
+		<li>WM_GETMINMAXINFO</li>
+		<li>WM_CTLCOLORSTATIC</li>
+		<li>WM_MOVE</li>
+		<li>DwmGetWindowAttribute</li>
+		<li>SetWindowLong</li>
+		<li>DWMWA_EXTENDED_FRAME_BOUNDS</li>
+		<li>GetSystemMetrics</li>
+		<li>MoveWindow</li>
+    </ul>
+
+    <h3>Punktacja:</h3>
+    <ul>
+		<li>Tytuł, ikona, tło - 2</li>
+		<li>Plansza do gry z ustawionym kolorem i właściwym rozmiarem - 3</li>
+		<li>Stały rozmiar aplikacji - 1</li>
+		<li>Drugie okno - 2</li>
+		<ul>
+			<li>Nie pojawia się na pasku zadań - 1</li>
+			<li>Wyglądające tak samo jak okno główne (tytuł, tło, plansza) - 1</li>
+		</ul>
+		<li>Poruszanie się okien względem środka ekranu - 2</li>
+		<li>Przezroczystość przy nachodzeniu okien na siebie - 2</li>
+    </ul>
+    </body>
+</html>
